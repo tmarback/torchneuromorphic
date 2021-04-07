@@ -18,6 +18,7 @@ import torch.utils.data
 from ..events_timeslices import *
 from ..utils import *
 import os
+from pathlib import Path
 
 from collections import namedtuple, defaultdict
 import torch
@@ -36,11 +37,12 @@ def nmnist_get_file_names(dataset_path):
     if not os.path.isdir(dataset_path):
         raise FileNotFoundError("N-MNIST Dataset not found, looked at: {}".format(dataset_path))
 
+    dataset_path = Path( dataset_path )
     train_files = []
     test_files = []
     for digit in range(10):
-        digit_train = glob.glob(os.path.join(dataset_path, 'Train/{}/*.bin'.format(digit)))
-        digit_test = glob.glob(os.path.join(dataset_path, 'Test/{}/*.bin'.format(digit)))
+        digit_train = ( dataset_path / 'Train' / str( digit ) ).glob( '*.bin' )
+        digit_test = ( dataset_path / 'Test' / str( digit ) ).glob( '*.bin' )
         train_files.append(digit_train)
         test_files.append(digit_test)
 
@@ -78,7 +80,7 @@ def create_events_hdf5(directory, hdf5_filename):
             data = nmnist_load_events_from_bin(file_d)
             times = data[:,0]
             addrs = data[:,1:]
-            label = int(file_d.split('/')[-2])
+            label = int(file_d.parts[-2])
             out = []
 
             if istrain: 
