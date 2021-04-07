@@ -41,8 +41,8 @@ def nmnist_get_file_names(dataset_path):
     train_files = []
     test_files = []
     for digit in range(10):
-        digit_train = ( dataset_path / 'Train' / str( digit ) ).glob( '*.bin' )
-        digit_test = ( dataset_path / 'Test' / str( digit ) ).glob( '*.bin' )
+        digit_train = list( ( dataset_path / 'Train' / str( digit ) ).glob( '*.bin' ) )
+        digit_test = list( ( dataset_path / 'Test' / str( digit ) ).glob( '*.bin' ) )
         train_files.append(digit_train)
         test_files.append(digit_test)
 
