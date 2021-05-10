@@ -33,8 +33,10 @@ mapping = { 0 :'0',
             9 :'9'}
 
 class NMNISTDataset(NeuromorphicDataset):
-    resources_url = [['https://www.dropbox.com/sh/tg2ljlbmtzygrag/AABlMOuR15ugeOxMCX0Pvoxga/Train.zip?dl=1',None, 'Train.zip'],
-                     ['https://www.dropbox.com/sh/tg2ljlbmtzygrag/AADSKgJ2CjaBWh75HnTNZyhca/Test.zip?dl=1', None, 'Test.zip']]
+    #resources_url = [['https://www.dropbox.com/sh/tg2ljlbmtzygrag/AABlMOuR15ugeOxMCX0Pvoxga/Train.zip?dl=1',None, 'Train.zip'],
+    #                 ['https://www.dropbox.com/sh/tg2ljlbmtzygrag/AADSKgJ2CjaBWh75HnTNZyhca/Test.zip?dl=1', None, 'Test.zip']]
+    resources_url = [['https://oqzvag.bl.files.1drv.com/y4mNm0Te-okHOAT2bpYDmeLb6RGP4BEeEj9a1rJXmGooZUweawFoi3wlqy5C0GeSARWgPiDnsa6IDCHu8mutr20nlTCp1fdmrUgW84z00zAMgLF2vnXIHVugHAS5rAfpV13jV4RmQzeKG5CcEBX60axQReBO9bjfElnAZ1pYorK9NpCUKFw_Fwz7yYFEguNpbSvNSto7XetxzNGQUdgusMz-w',None, 'Train.zip'],
+                     ['https://oqzvag.bl.files.1drv.com/y4mMkgFkEsg9z9WdBOW4z2XX9HZgnthqKIQ-umfO5CBPQU5sg6uc161SmMkNgXIVBEXXuzlqWcpTolw5R5inUXAtdijzv3P2OH_S4VeOxZRYQjV5bubCOFoN4-9x5DvOyGLavHFBOKhVFhvkzwexngNaI8sxLkrkKsOspkkFY-uZ4ayDP07r06nLCw40iJ3yaSoZlRNgsrUUb9pUTY2pBg7uA', None, 'Test.zip']]
     directory = './data/nmnist/'
     resources_local = [directory+'Train', directory+'Test']
 
