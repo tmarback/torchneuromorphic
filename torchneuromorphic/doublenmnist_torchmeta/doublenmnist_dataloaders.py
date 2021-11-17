@@ -173,13 +173,19 @@ def create_class_dataset(dset, meta_split = 'train'):
     return ds
 
 class DoubleNMNIST(torchmeta.utils.data.CombinationMetaDataset):
-    def __init__(self, root, num_classes_per_task=None, meta_train=False,
+    def __init__(self, root='data/nmnist/n_mnist.hdf5', num_classes_per_task=None, meta_train=False,
                  meta_val=False, meta_test=False, meta_split=None,
                  transform=None, target_transform=None, dataset_transform=None,
                  class_augmentations=None, download=False,chunk_size=300):
 
+        if transform is None:
+            transform = Compose([
+                CropDims(low_crop=[0,0], high_crop=[32,64], dims=[2,3]),
+                Downsample(factor=[1000,1,1,1]),
+                ToCountFrame(T = 300, size = [2, 32, 64]),
+                ToTensor()])
         if target_transform is None:
-            target_tranform = Categorical(num_classes_per_task)
+            target_transform = Categorical(num_classes_per_task)
             
         dataset = ClassNMNISTDataset(root,
             meta_train=meta_train, meta_val=meta_val,
